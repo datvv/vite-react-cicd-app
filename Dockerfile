@@ -12,7 +12,7 @@ RUN yarn install --force
 RUN yarn build
 
 # production stage
-FROM nginx:stable-alpine as production-stage
+FROM nginxinc/nginx-unprivileged:stable-alpine as production-stage
 COPY --from=build-stage /opt/src/app/dist /usr/share/nginx/html
 COPY default.conf /etc/nginx/conf.d/default.conf
 EXPOSE 80
