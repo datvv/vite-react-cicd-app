@@ -11,7 +11,6 @@ COPY . .
 RUN yarn install --force
 RUN yarn build
 
-
 # production stage
 FROM nginx:stable-alpine as production-stage
 COPY --from=build-stage /opt/src/app/dist /usr/share/nginx/html
